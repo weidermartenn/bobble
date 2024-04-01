@@ -34,11 +34,11 @@
 
         <style>
         textarea {
-            resize: none; / Отключение возможности изменения размера */
+            resize: none; /* Отключение возможности изменения размера */
         }
         </style>
 
         <p><input type="text" size="50" name="ADRESS" placeholder="Your email"></p>
-        <p><input class="btn btn-default" type="submit" value="Send"></p>
+        <p><input class="bt btn-default" type="submit" value="Send"></p>
 </form>
 
