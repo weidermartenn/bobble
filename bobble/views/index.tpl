@@ -37,7 +37,41 @@
             <p><input type="date" name="DATE" placeholder="Date"></p>
             <p><input type="submit" value="Send" class="btn btn-default"></p>
         </form>
+        <div id="errorMessages"></div>
 
-        
+        <script>
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            var errorMessages = document.getElementById('errorMessages');
+            errorMessages.innerHTML = '';
+
+            var QUEST = document.getElementsByName('QUEST')[0].value;
+            var NAME = document.getElementsByName('NAME')[0].value;
+            var ADRESS = document.getElementsByName('ADRESS')[0].value;
+            var DATE = document.getElementsByName('DATE')[0].value;
+
+            if (!QUEST || !NAME || !ADRESS || !DATE) {
+                errorMessages.innerHTML = '<p style="color: red; font-weight: bold;">All fields are required.</p>';
+                event.preventDefault();
+            } else {
+                var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                if (!emailPattern.test(ADRESS)) {
+                    errorMessages.innerHTML = '<p style="color: red; font-weight: bold;">Please enter a valid email address.</p>';
+                    event.preventDefault();
+                } else {
+                    var currentDate = new Date().toISOString().split('T')[0];
+                    if (DATE > currentDate) {
+                        errorMessages.innerHTML = '<p style="color: red; font-weight: bold;">Date cannot be in the future.</p>';
+                        event.preventDefault();
+                    } else {
+                        var year = new Date(DATE).getFullYear();
+                        if (year < 2000) {
+                            errorMessages.innerHTML = '<p style="color: red; font-weight: bold;">Date cannot be less than 2000.</p>';
+                            event.preventDefault();
+                        }
+                    }
+                }
+            }
+        });
+        </script>
 
 
