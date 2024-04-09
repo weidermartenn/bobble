@@ -1,0 +1,22 @@
+{
+  "mail@mail.ru": {
+    "NAME": "oleg",
+    "ADRESS": "mail@mail.ru",
+    "DATE": "2024-04-01",
+    "QUESTIONS": [
+      "Question 1",
+      "Question 2"
+    ]
+  },
+  "mail2@mail.ru": {
+    "NAME": "oleg",
+    "ADRESS": "mail2@mail.ru",
+    "DATE": "2024-04-01",
+    "QUESTIONS": [
+      "Question 2"
+    ]
+  }
+}
+
+
+
