@@ -9,7 +9,6 @@ def my_form():
     mail = request.forms.get('ADRESS') 
     date_str = request.forms.get('DATE')   
     
-    questions.setdefault(mail, quest)
+    questions.setdefault(mail, [name, quest])  # Changed to set list [name, quest] as value for 'mail' key
     pdb.set_trace()
     return("Thanks, %s! The answer will be sent to the email %s Access Date: %s" % (name, mail, date_str))
-    
