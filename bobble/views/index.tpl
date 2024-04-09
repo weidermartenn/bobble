@@ -31,7 +31,7 @@
 <h3> Ask a Question </h3>
         <form id="myForm" action="/home" method="post">
             <div id="errorMessages"></div>
-            <p><textarea style="resize: none" rows="2" cols="50" name="QUEST" placeholder="Your question"></textarea></p> 
+            <p><textarea style="resize: none;" rows="2" cols="50" name="QUEST" placeholder="Your question"></textarea></p> 
             <p><input type="text" size="50" name="NAME" placeholder="Your name"></p>
             <p><input type="text" size="50" name="ADRESS" placeholder="Your email"></p>
             <p><input type="date" name="DATE" placeholder="Date"></p>
@@ -40,7 +40,7 @@
         <div id="errorMessages"></div>
 
         <script>
-        document.getElementById('myForm').addEventListener('submit', function(event) {
+            document.getElementById('myForm').addEventListener('submit', function(event) {
             var errorMessages = document.getElementById('errorMessages');
             errorMessages.innerHTML = '';
 
@@ -53,7 +53,22 @@
                 errorMessages.innerHTML = '<p style="color: red; font-weight: bold;">All fields are required.</p>';
                 event.preventDefault();
             } else {
-                var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                if(QUEST.length > 255){
+                    errorMessages.innerHTML = '<p style="color: red; font-weight: bold;">Question message too long. Enter message that be less than 255 symbols.</p>';
+                    event.preventDefault();
+                }
+                if(NAME.length > 30 || NAME.length < 4){
+                    errorMessages.innerHTML = '<p style="color: red; font-weight: bold;">Name is too long. Enter name that be less than 30 symbols and more than 4.</p>';
+                    event.preventDefault();
+                }
+                var namePattern = /^[a-zA-Z0-9\._ ]{1,30}$/;
+                var emailPattern = /^[a-zA-Z0-9._%+-]{3,}@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+                if (!namePattern.test(NAME)) {
+                    errorMessages.innerHTML = '<p style="color: red; font-weight: bold;">Please enter a valid name (may contains ".", "_" and space).</p>';
+                    event.preventDefault();
+                }
+               
                 if (!emailPattern.test(ADRESS)) {
                     errorMessages.innerHTML = '<p style="color: red; font-weight: bold;">Please enter a valid email address.</p>';
                     event.preventDefault();
