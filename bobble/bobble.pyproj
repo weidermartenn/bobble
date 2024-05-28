@@ -22,7 +22,7 @@
     <WebBrowserPort>
     </WebBrowserPort>
     <TestFramework>unittest</TestFramework>
-    <UnitTestPattern>test_app.py</UnitTestPattern>
+    <UnitTestPattern>test_*.py</UnitTestPattern>
     <UnitTestRootDirectory>.</UnitTestRootDirectory>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
