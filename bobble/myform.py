@@ -1,5 +1,6 @@
 from bottle import post, request
 import json
+from utils import check_email
 
 @post('/home')
 def my_form():
@@ -13,7 +14,7 @@ def my_form():
         return "Please enter a valid question (more than 3 characters and not just digits)."
     
     # Проверка на корректность данных в поле почты пользователя
-    if '@' not in mail or '.' not in mail:
+    if not check_email(mail):
         return "Please enter a valid email address."
     
     # Создание новой записи в формате словаря, включая все поля
